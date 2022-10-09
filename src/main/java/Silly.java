@@ -78,8 +78,13 @@ public class Silly implements Comparable<Silly>{
      *       Afterwards, set this.name to the concatenation of both
      *       strings (e.g. this.name = [first string] + [second string]).
      *       Make sure you document this method!
+     *
+     *       Creates a new Silly object
+     *       And the name is first + last name
      */
-
+    public Silly(String first, String last) {
+        this.name = first + last;
+    }
 
 
 
@@ -116,7 +121,7 @@ public class Silly implements Comparable<Silly>{
         y.countStatic();
         x.countStatic();
         x.countStatic();
-        int[] expected_values = {};
+        int[] expected_values = {x.countStatic(), y.countStatic(), x.countStatic(), x.countStatic()};
 
         System.out.println("The countStatic calls will return " + Arrays.toString(expected_values));
     }
@@ -134,6 +139,7 @@ public class Silly implements Comparable<Silly>{
     @Override
     public String toString(){
         // TODO (Task 3): Implement the body of this method!
+        return this.name;
     }
 
     /**
@@ -153,7 +159,7 @@ public class Silly implements Comparable<Silly>{
          *                We've started it by checking the type of o for you.
          *                You just need to return true if the names are equal.
          */
-        if (!(o instanceof Silly)){
+        if (!(o instanceof Silly)) {
             return false;
         }
 
@@ -161,7 +167,12 @@ public class Silly implements Comparable<Silly>{
 
         // Hint: to compare strings, we need to use .equals()
         //       e.g. s1.equals(s2)
+        if (this == o) {
+            return true;
+        }
+        return false;
     }
+
 
     /**
      * 5. If we want to compare two objects, we have to do two things:
@@ -183,6 +194,7 @@ public class Silly implements Comparable<Silly>{
      * @return a negative integer, zero, or a positive integer as this
      * object is less than, equal to, or greater than the specified object.
      */
+
     @Override
     public int compareTo(Silly other) {
         /**
@@ -194,6 +206,13 @@ public class Silly implements Comparable<Silly>{
          *                You can get the length of a string by using the
          *                .length() method.
          */
+        if (this.name.length() > other.name.length()){
+            return 5;
+        }
+        if (this.name.length() < other.name.length()){
+            return -5;
+        }
+        return 0;
     }
 
     /*
